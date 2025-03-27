@@ -4,10 +4,15 @@ require 'vendor/autoload.php'; // Load Twilio SDK
 use Twilio\Rest\Client;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Twilio API Credentials
-    $account_sid = "AC5f84a48a47c8a1325fca7e73dd994694";
-    $auth_token = "8d766da967ce21b0a41b6dca6cf0a658";
-    $twilio_number = "+12314033756"; // Must be a valid Twilio number
+    
+/* 
+#Uncomment If You Want To Include Sms
+// Twilio API Credentials
+$account_sid = "Account_SID";
+$auth_token = "Auth_Token";
+$twilio_number = "Twillio_Number"; // Must be a valid Twilio number
+
+*/
 
     // Get Form Data
     $name = $_POST['name'];
@@ -16,16 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
+/*
+
     // Ensure the phone number is in the correct format (+91 for India)
     if (!preg_match('/^\+91\d{10}$/', $mobile)) {
         $mobile = "+91" . ltrim($mobile, '0'); // Add +91 if missing
     }
 
     // Create SMS Message
-    $messageBody = "Query Received:
+    $messageBody = "
+    Query Received:
     Name: $name
     Subject: $subject
     Message: $message
+    You Will Receive A Response Very Soon
     From: Reisha SIES Hospital";
 
     try {
@@ -38,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'body' => $messageBody
             ]
         );
+        */
 
         // Define the CSV file path
         $file = 'queries.csv';

@@ -3,10 +3,14 @@ require 'vendor/autoload.php'; // Load Twilio SDK
 
 use Twilio\Rest\Client;
 
+/* 
+#Uncomment If You Want To Include Sms
 // Twilio API Credentials
-$account_sid = "AC5f84a48a47c8a1325fca7e73dd994694";
-$auth_token = "8d766da967ce21b0a41b6dca6cf0a658";
-$twilio_number = "+12314033756"; // Must be a valid Twilio number
+$account_sid = "Account_SID";
+$auth_token = "Auth_Token";
+$twilio_number = "Twillio_Number"; // Must be a valid Twilio number
+
+*/
 
 // Get Form Data
 $name = $_POST['name'];
@@ -16,6 +20,8 @@ $doctor = $_POST['doctor'];
 $date = $_POST['date'];
 $time = $_POST['time'];
 $problem = $_POST['problem'];
+
+/*
 
 // Ensure the phone number is in the correct format (+91 for India)
 if (!preg_match('/^\+91\d{10}$/', $mobile)) {
@@ -31,19 +37,24 @@ if (!file_exists($file)) {
     fclose($fp);
 }
 
+*/
+
 // Save Appointment Data to CSV
 $fp = fopen($file, 'a');
 fputcsv($fp, [$name, $email, $mobile, $doctor, $date, $time, $problem]);
 fclose($fp);
 
 // Create SMS Message
-$messageBody = "Appointment Confirmation:
+$messageBody = "
+Appointment Confirmation:
 Name: $name
 Doctor: $doctor
 Date: $date
 Time: $time
 Problem: $problem
 From: Reisha SIES Hospital";
+
+/*
 
 try {
     $client = new Client($account_sid, $auth_token);
@@ -54,6 +65,8 @@ try {
             'body' => $messageBody
         ]
     );
+
+*/
 
     // JavaScript Alert with Confirmation and Reload (Redirects to HTML Page)
     echo "<script>
