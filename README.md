@@ -93,3 +93,7 @@ This project is licensed under the MIT License.
 Contact
 
 For any issues or queries, contact dubey.raj2005@gmail.com.
+
+Partner
+
+Reisha:- https://github.com/Reisha15
